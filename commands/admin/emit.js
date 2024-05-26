@@ -1,8 +1,10 @@
 module.exports = {
     name: 'emit',
+    category: 'admin',
+    permissions: ['ADMINISTRATOR'],
     description: 'Emettre un événement au choix!',
     run: (client, message, args) => {
-        if (!args[0] || !args[0].match(/^(guildMemberAdd|guildMemberRemove)$/)) return message.reply('merci d\'entrer un événement valide (\`guildMemberAdd\`/\`guildMemberRemove\`)');
+        if (!args[0] || !args[0].match(/^(guildMemberAdd|guildMemberRemove)$/)) return message.reply('Merci d\'entrer un événement valide (\`guildMemberAdd\`/\`guildMemberRemove\`)');
 
         if (args[0] == 'guildMemberAdd') {
             client.emit('guildMemberAdd', message.member);
@@ -30,15 +32,15 @@ module.exports = {
             ]
         }
     ],
-    runSlash: (client, interaction) => {
+    runInteraction: (client, interaction) => {
         const evtChoices = interaction.options.getString('event');
 
         if (evtChoices == 'guildMemberAdd') {
             client.emit('guildMemberAdd', interaction.member);
-            interaction.reply({ content: 'Event guildMemberAdd émit!', ephemereal: true });
+            interaction.reply({ content: 'Event guildMemberAdd émit!', ephemeral: true });
         }else{
             client.emit('guildMemberRemove', interaction.member);
-            interaction.reply({ content: 'Event guildMemberRemove émit!', ephemereal: true });
+            interaction.reply({ content: 'Event guildMemberRemove émit!', ephemeral: true });
         }
     }
 };
