@@ -4,7 +4,10 @@ module.exports = {
     name: 'ping',
     category: 'utils',
     permissions: [],
-    description: 'Commande ping!',
+    ownerOnly: false,
+    usage: 'ping',
+    examples: ['ping'],
+    description: "La commande ping renvoie la latence du bot et de l'API",
     async run(client, message, args) {
 
         const tryPong = await message.channel.send("Envoi d’une requête 'ping' sur discord.com [162.159.128.233]..");

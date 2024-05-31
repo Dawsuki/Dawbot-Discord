@@ -2,8 +2,11 @@ const { MessageEmbed } = require('discord.js');
 
 module.exports = {
     name: 'userinfo',
-    category: 'users',
+    category: 'contextuel',
     permissions: [],
+    ownerOnly: false,
+    usage: 'Utiliser le menu contextuel de Discord!',
+    examples: ['Utiliser le menu contextuel de Discord!'],
     type: 'USER',
     async runInteraction(client, interaction) {
             const member = await interaction.guild.members.fetch(interaction.targetId);
@@ -22,7 +25,7 @@ module.exports = {
                 } else if (currentActivity.type === 'WATCHING' && currentActivity.name === 'Crunchyroll') {
                     activity = `${crunchyrollEmoji} Regarde Crunchyroll : ${currentActivity.details}`;
                 } else if (currentActivity.type === 'CUSTOM_STATUS') {
-                    activity = `${currentActivity.state}`;
+                    activity = `${currentActivity.details}`;
                 } else {
                     activity = `${currentActivity.type.charAt(0).toUpperCase() + currentActivity.type.slice(1).toLowerCase()} ${currentActivity.name}`;
                 }
