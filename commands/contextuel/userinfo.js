@@ -8,6 +8,7 @@ module.exports = {
     usage: 'Utiliser le menu contextuel de Discord!',
     examples: ['Utiliser le menu contextuel de Discord!'],
     type: 'USER',
+    async run (client, message, args) { return message.reply('Utiliser le menu contextuel de Discord!') },
     async runInteraction(client, interaction) {
             const member = await interaction.guild.members.fetch(interaction.targetId);
 

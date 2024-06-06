@@ -96,7 +96,7 @@ module.exports = {
                 { name: 'Utilisation', value: usage, inline: false },
                 { name: 'Exemples', value: examples, inline: false }
             )
-            .setFooter({ text: cmd.ownerOnly ? '⚠️ Pour les admins du bot uniquement ⚠️' : '' });
+            .setFooter({ text: cmd.ownerOnly ? '⚠️ Pour le créateur du bot uniquement ⚠️' : '' });
 
         return interaction.reply({ embeds: [argsEmbed], ephemeral: true });
     }

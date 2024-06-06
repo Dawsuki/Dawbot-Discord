@@ -4,9 +4,8 @@ const mongoose = require('mongoose');
 const client = new Client({ intents: 3276799 });
 const Logger = require('./utils/Logger');
 
-client.commands = new Collection();
-
-['CommandUtil', 'EventUtil'].forEach(handler => { require(`./utils/handlers/${handler}`)(client) });
+['commands', 'buttons', 'selects'].forEach(x => client[x] = new Collection());
+['CommandUtil', 'EventUtil', 'ButtonUtil', 'SelectUtil'].forEach(handler => { require(`./utils/handlers/${handler}`)(client) });
 
 process.on('exit', code => { Logger.client(`Le processus s'est arrêté avec le code: ${code}!`) });
 
